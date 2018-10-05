@@ -5,8 +5,102 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+
 </head>
+
 <body>
+  <h1>Pschic Game!</h1>
+    <h3 id="message">Guess what letter I am thinking of?</h3>
+    <h5>Guesses Left : 
+      <span id="guessesLeft"></span>
+    </h5>
+    <h5>Wins: 
+      <span id="wins"></span>
+    </h5>
+    <h5>Losses: 
+      <span id="losses"></span>
+    </h5>
+    <h6>Already guessed letters :
+       <span id="guesses"></span>
+      </h6>
+ 
+  <script>
+  const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j' , 'k' , 'l', 'm' , 'n' , 'o' , 'p' , 'q' , 'r' , 's' , 't' , 'u' , 'v' , 'w', 'x' , 'y' , 'z']
+  let wins = 0
+  let losses = 0
+  let guessesLeft = 10
+  let guessedLetters =[] 
+  let compChoice = ''
   
+ function reset() {
+   compChoice = compGuess()
+   console.log(compChoice)
+   guessesLeft = 10
+   guessedLetters = []
+   document.querySelector('#message').innerHTML = 'Guess what letter I am thinking of ?'
+   document.querySelector('#guessesLeft').innerHTML = '' + guessesLeft
+   document.querySelector('#wins').innerHTML = '' + wins
+   document.querySelector('#losses').innerHTML = '' + losses
+   document.querySelector('#guesses').innerHTML = '' + guessedLetters.toString()  
+
+ }
+  function compGuess (){
+    return letters[Math.floor(Math.random() * letters.length)]
+  }
+
+  function win() {
+   wins++ 
+    document.querySelector('#message').innerHTML = `You Win! Congratulations!
+    The letter was : ${compChoice}!
+    Press Enter to continue... `
+    document.querySelector('#wins').innerHTML = '' + wins
+
+  }
+
+   function lose(letter) {
+  losses++
+    document.querySelector('#message').innerHTML = `You Lose! 
+    You guessed : ${letter}, but the correct answer was ${compChoice}
+    Press Enter to try again...`
+    document.querySelector('#losses').innerHTML = '' + losses
+  }
+
+  function wrong() {
+   document.querySelector('#message').innerHTML = 'Wrong! Keep Guessing'
+   document.querySelector('#guessesLeft').innerHTML = '' + guessesLeft
+  }
+
+
+  function alphaCheck(letter) {
+    let result = false
+
+    for (let i = o; i < letters ; i++) {
+       if (letter === letters[i]) {
+        result = true
+    }
+  }
+    document.onkeyup = function (event) {
+     const letter = event.key 
+      if (letter ===! 'Enter') {
+      if () {
+        
+      }
+      } 
+    }
+
+  }
+    guestLetters.push(letter)
+    document.querySelector('#guesses').innerHTML = guessedLetters.toString()
+
+    guessesLeft-- 
+
+    letter === compChoice ? win() : (guessesLeft > 0 ?  wrong() : lose(letter)) 
+  }  else { reset(): void)
+      reset()
+ }
+
+  
+  reset()
+   </script>
 </body>
-</html>
+</html>-
